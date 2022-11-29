@@ -1,0 +1,53 @@
+<div class="sidebar" data-color="blue">
+
+  <div class="logo">
+    <a href="/danhsach" class="simple-text logo-mini">
+    </a>
+    <a href="/danhsach" class="simple-text logo-normal">
+      CitizenV
+    </a>
+  </div>
+  <div class="sidebar-wrapper" id="menu">
+    <ul class="nav" id="trang">
+      <li class="" id="ds">
+        <a href="/list">
+          <i class="now-ui-icons files_paper"></i>
+          <p>Tổng hợp dữ liệu</p>
+        </a>
+      </li>
+      <li class="" id="ql">
+        <a href="/manage">
+          <i class="now-ui-icons business_briefcase-24"></i>
+          <p>Quản lý nhập liệu</p>
+        </a>
+      </li>
+      <li class="" id="tc">
+        <a href="/search">
+          <i class="now-ui-icons ui-1_zoom-bold"></i>
+          <p>Tra cứu</p>
+        </a>
+      </li>
+      <li class="" id="nl">
+        <a href="/form">
+          <i class="now-ui-icons business_badge"></i>
+          <p>Nhập liệu</p>
+        </a>
+      </li>
+      <li>
+        <a href="/">
+          <i class="now-ui-icons media-1_button-power"></i>
+          <p>Đăng xuất</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nav a').on('click',function () {
+    $('.nav').find( 'li.active' ).removeClass( 'active' );
+        $( this ).parent( 'li' ).addClass( 'active' );
+    });
+</script>
+<script src="/js/header.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

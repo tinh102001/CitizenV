@@ -1,0 +1,245 @@
+<link href="css/list.css" rel="stylesheet" />
+<style>
+
+</style>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="column"></div>
+            <div class="column"></div>
+          </div>
+          <h3 id="ten"></h3>
+          <h3 id="doituong"></h3>
+          <h3 id="quyen"></h3>
+          <h3 id="tiendo"></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <h4 class="card-title">Quản lý</h4>
+            <div class="col-md-2" id="inphieu">
+              <button class="btn btn-primary btn-block" onclick="inphieu()">
+                In phiếu
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2" id="xoa_mat_khau">
+              <button class="btn btn-primary btn-block">Xóa mật khẩu</button>
+            </div>
+            <div class="col-md-2" id="thay_doi_mat_khau">
+              <button class="btn btn-primary btn-block">
+                Cấp mật khẩu
+              </button>
+            </div>
+            <div class="col-md-2" id="thay_doi_quyen">
+              <button class="btn btn-primary btn-block">Cấp quyền</button>
+            </div>
+            <div class="col-md-2" id="xoa_quyen">
+              <button class="btn btn-primary btn-block">Xóa quyền</button>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-block" onclick="hoan_thanh()">
+                Hoàn thành
+              </button>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-block" onclick="chua_hoan_thanh()">
+                Chưa hoàn thành
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table" id="table">
+              <thead class="text-primary">
+                <tr>
+                  <th>Mã</th>
+                  <th>Địa phương</th>
+                  <th>Mật khẩu</th>
+                  <th>Quyền</th>
+                  <th>Tiến độ</th>
+                  <th>Ngày hạn</th>
+                </tr>
+              </thead>
+              <tbody id="list"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Model xóa mật khẩu --}}
+<div class="custom-model-main" id="model_xoa_mat_khau">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_xoa_mat_khau">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Xóa mật khẩu</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nhập id</label>
+              <input type="text" class="form-control" id="xoa_id" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="dropPass()">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+{{!-- Model thay đổi mật khẩu --}}
+<div class="custom-model-main" id="model_thay_doi_mat_khau">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_thay_doi_mat_khau">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Thay đổi mật khẩu</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nhập id</label>
+              <input type="text" class="form-control" id="thay_id" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Mật khẩu mới</label>
+              <input type="text" class="form-control" id="thay_pass" />
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="providePass()">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+{{!-- Model thay đổi quyền --}}
+<div class="custom-model-main" id="model_thay_doi_quyen">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_thay_doi_quyen">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Thay đổi mật khẩu</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nhập id</label>
+              <input type="text" class="form-control" id="thay_doi_quyen_id" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Ngày mở quyền (trống nếu là hôm nay)</label>
+              <input type="text" class="form-control" id="ngay_mo" placeholder="DD/MM/YYYY" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Ngày đóng quyền (trống nếu là mai)</label>
+              <input type="text" class="form-control" id="ngay_dong" placeholder="DD/MM/YYYY" />
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="thay_doi_quyen()">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+{{!-- Model xóa quyền --}}
+<div class="custom-model-main" id="model_xoa_quyen">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_xoa_quyen">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Xóa quyền</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nhập id</label>
+              <input type="text" class="form-control" id="xoa_quyen_id" />
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="xoa_quyen()">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/manage.js"></script>
+<script>
+  $("#xoa_mat_khau").on("click", function () {
+    $("#model_xoa_mat_khau").addClass("model-open");
+  });
+  $("#close_xoa_mat_khau, .bg-overlay").click(function () {
+    $("#model_xoa_mat_khau").removeClass("model-open");
+  });
+
+  $("#thay_doi_mat_khau").on("click", function () {
+    $("#model_thay_doi_mat_khau").addClass("model-open");
+  });
+  $("#close_thay_doi_mat_khau, .bg-overlay").click(function () {
+    $("#model_thay_doi_mat_khau").removeClass("model-open");
+  });
+
+  $("#thay_doi_quyen").on("click", function () {
+    $("#model_thay_doi_quyen").addClass("model-open");
+  });
+  $("#close_thay_doi_quyen, .bg-overlay").click(function () {
+    $("#model_thay_doi_quyen").removeClass("model-open");
+  });
+
+  $("#xoa_quyen").on("click", function () {
+    $("#model_xoa_quyen").addClass("model-open");
+  });
+  $("#close_xoa_quyen, .bg-overlay").click(function () {
+    $("#model_xoa_quyen").removeClass("model-open");
+  });
+</script>

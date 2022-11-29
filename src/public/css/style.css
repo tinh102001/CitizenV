@@ -1,0 +1,66 @@
+body {
+    display: grid;
+    grid-template-columns: 200px auto 200px;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    position: fixed;
+    top:0px;
+    background-color: rgb(180, 180, 180);
+    height: 100vh;
+    width: 200px;
+    padding: 2px;
+}
+
+#setting {
+    position: fixed;
+    bottom:0;
+}
+
+header li {
+    margin:10px;
+}
+
+.body {
+    height: 2000px;
+    grid-column: 2;
+    display: block;
+    background-color: rgb(204, 133, 133);
+    font-size: 24px;
+}
+
+#info {
+    grid-column: 3;
+    display: block;
+    height: 100vh;
+    width: 200px;
+    background-color: aqua;
+    position:fixed;
+    right:0;
+}
+
+table {
+    width: 100%;
+    padding:10px;
+    background-color:rgb(184, 255, 175);
+}
+
+thead {
+    background-color:rgb(54, 150, 62);
+    color: #fff;
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color: rgb(133, 196, 74);
+}
+
+#summary {
+    padding: 10px;
+    background-color: rgb(224, 255, 141);
+}

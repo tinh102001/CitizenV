@@ -1,0 +1,108 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"
+/>
+<style>
+  #table th , .text-primary td , .card-title{
+    font-weight: 800;
+  }
+ 
+</style>
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Tra cứu</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <div class="form">
+                <table class="table" id="table">
+                  <thead id="head_table" class="text-primary">
+                    <tr>
+                      <th>CMND</th>
+                      <th>Họ và tên</th>
+                      <th>Tỉnh</th>
+                      <th>Huyện</th>
+                      <th>Xã</th>
+                      <th>Thôn</th>
+                    </tr>
+                  </thead>
+                  <tbody id="body_table">
+                    <tr>
+                      <td>
+                        <input type="text" id="cmnd" class="form-control" />
+                      </td>
+                      <td>
+                        <input type="text" id="hovaten" />
+                      </td>
+                      <td>
+                        <input list="danhsachtinh" type="text" id="tinh" />
+                        <datalist id="danhsachtinh">
+                        </datalist>
+                      </td>
+                      <td>
+                        <input list="danhsachhuyen" type="text" id="huyen" />
+                        <datalist id="danhsachhuyen">
+                        </datalist>
+                      </td>
+                      <td>
+                        <input list="danhsachxa" type="text" id="xa" />
+                        <datalist id="danhsachxa">
+                        </datalist>
+                      </td>
+                      <td>
+                        <input list="danhsachthon" type="text" id="thon" />
+                        <datalist id="danhsachthon">
+                        </datalist>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+                <div class="col-lg-2 ml-auto">
+                  <button
+                    class="btn btn-primary btn-block"
+                    value="Tra cứu"
+                    onclick="tracuu()"
+                  >Tra cứu</button>
+                </div>
+                <table id="mytable" class="table">
+                  <thead class="text-primary">
+                    <tr>
+                      <td>CMND</td>
+                      <td>Họ và tên</td>
+                      <td>Ngày sinh</td>
+                      <td>Giới tính</td>
+                      <td>Quê quán</td>
+                      <td>Địa chỉ thường trú</td>
+                      <td>Địa chỉ tạm trú</td>
+                      <td>Tôn giáo</td>
+                      <td>Trình độ văn hóa</td>
+                      <td>Nghề nghiệp</td>
+                    </tr>
+                  </thead>
+                  <tbody id="ketquatimkiem">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script
+  type="text/javascript"
+  charset="utf8"
+  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"
+>
+</script>
+<script type="text/javascript" src="/js/search.js"></script>

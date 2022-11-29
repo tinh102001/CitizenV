@@ -1,0 +1,201 @@
+<link href="css/list.css" rel="stylesheet" />
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Danh sách</h4>
+          <div id="thongke">
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-block" onclick="closeStat()">Đóng</button>
+            </div>
+            <div id="chart_div"></div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 ml-auto mr-auto">
+              <div class="row">
+                <div class="col-md-3">
+                  <button class="btn btn-primary btn-block" id="chinh_sua">
+                    Chỉnh sửa
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary btn-block" id="them_dia_phuong">
+                    Thêm địa phương
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary btn-block" id="xoa_dia_phuong">
+                    Xóa địa phương
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary btn-block" onclick="getDataStat()">
+                    Thống kê
+                  </button>
+                  <select id="bieudo" class="form-control">
+                    <option value="mat_do">Mật độ dân số</option>
+                    <option value="thap_tuoi">Tháp tuổi</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div id="navigation">
+              <p>Toàn Quốc</p>
+            </div>
+            <table class="table" id="table">
+              <thead class="text-primary" id="tieude">
+                <tr>
+                  <th></th>
+                  <th>Mã</th>
+                  <th>Địa phương</th>
+                </tr>
+              </thead>
+              <tbody id="list_pre_node"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Model chỉnh sửa --}}
+<div class="custom-model-main" id="chinh_sua_model">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_chinh_sua_model">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Chỉnh sửa</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nhập mã địa phương</label>
+              <input type="text" class="form-control" id="id_chinh_sua" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Tên mới</label>
+              <input type="text" class="form-control" id="name_chinh_sua" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Diện tích</label>
+              <input type="text" class="form-control" id="dt_chinh_sua" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="chinhSua()">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+{{!-- Model thêm địa phương --}}
+<div class="custom-model-main" id="them_model">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_them_model">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Thêm địa phương</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Tên mới</label>
+              <input type="text" class="form-control" id="name_them" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Diện tích</label>
+              <input type="text" class="form-control" id="dt_them" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="themDiaPhuong()">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+{{!-- Xóa địa phương --}}
+<div class="custom-model-main" id="xoa_model">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_xoa_model">×</div>
+    <div class="custom-model-wrap">
+      <div class="pop-up-content-wrap">Xóa địa phương</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Nhập mã địa phương</label>
+              <input type="text" class="form-control" id="id_xoa" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="xoaDiaPhuong()">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/list.js"></script>
+<script>
+  $("#chinh_sua").on("click", function () {
+    $("#chinh_sua_model").addClass("model-open");
+  });
+  $("#close_chinh_sua_model, .bg-overlay").click(function () {
+    $("#chinh_sua_model").removeClass("model-open");
+  });
+
+  $("#them_dia_phuong").on("click", function () {
+    $("#them_model").addClass("model-open");
+  });
+  $("#close_them_model, .bg-overlay").click(function () {
+    $("#them_model").removeClass("model-open");
+  });
+
+  $("#xoa_dia_phuong").on("click", function () {
+    $("#xoa_model").addClass("model-open");
+  });
+  $("#close_xoa_model, .bg-overlay").click(function () {
+    $("#xoa_model").removeClass("model-open");
+  });
+</script>

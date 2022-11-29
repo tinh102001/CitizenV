@@ -1,0 +1,110 @@
+<link href="css/list.css" rel="stylesheet" />
+<div class="content" id="main">
+  <div class="card">
+    <div class="card-header">
+
+
+      <div id="navigation">
+      </div>
+      <table id="table" class="table">
+        <thead class="text-primary" id="tieude">
+          <tr>
+            <th></th>
+            <th>Mã</th>
+            <th>Địa điểm</th>
+          </tr>
+        </thead>
+        <tbody id="list_pre_node">
+      </table>
+      <div id="new_family_btn">
+        <div class="col-md-2 ml-auto">
+          <button  class="btn btn-primary btn-block">Thêm hộ</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-body">
+      <form id="chu_ho">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Mã hộ</label>
+              <input type="text" class="form-control id_ho" disabled="true" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="title">Thành viên </h5>
+    </div>
+    <div class="card-body">
+      <div id="thanh_vien">
+
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-lg-8 ml-auto ">
+          <div class="row">
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-block" id="add">Thêm thành viên</button>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary btn-block" id="submit">Hoàn thành</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="err" style="color : red"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Model them ho khau-->
+<div class="custom-model-main" id="them_model">
+  <div class="custom-model-inner">
+    <div class="close-btn" id="close_them_model">×</div>
+    <div class="custom-model-wrap" id="them_btn">
+      <div class="pop-up-content-wrap">Thêm hộ mới</div>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Tên hộ mới</label>
+              <input type="text" class="form-control" id="name_family" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-lg-8 ml-auto mr-auto">
+          <button class="btn btn-primary btn-block" onclick="newFamily()">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-overlay"></div>
+</div>
+
+<footer class="footer">
+  <div class="container-fluid">
+    <div id="err" style="color : red"></div>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/js/form.js"></script>
+<script>
+  $("#new_family_btn").on("click", function () {
+    $("#them_model").addClass("model-open");
+  });
+  $("#close_them_model, .bg-overlay").click(function () {
+    $("#them_model").removeClass("model-open");
+  });
+</script>
